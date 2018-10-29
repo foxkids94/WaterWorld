@@ -47,19 +47,20 @@ class AllCategoryVC: UICollectionViewController, Update {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return DataSource.shared.allCategory.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CellCategory
     
-        // Configure the cell
+        cell.imageCategory.image = DataSource.shared.allCategory[indexPath.row].image
+        cell.titleCategory.text = DataSource.shared.allCategory[indexPath.row].title
     
         return cell
     }
