@@ -8,16 +8,31 @@
 
 import UIKit
 import Alamofire
+import CoreData
 
 class DataSource: NSObject {
 
     var allCategory: [Category] = []
     var allProduct: [Product] = []
-    
+    var allAdresses: [UserInfo] = []
     static let shared = DataSource()
     
     private override init() {}
     let url: URL = URL(string: "http://149.154.69.176")!
+    
+    
+    func downloadAdres() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let contex = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<UserInfo> = UserInfo.fetchRequest()
+        
+        do {
+            DataSource.shared.allAdresses = try contex.fetch(fetchRequest)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     
     func downloadAllTxtData(){
         request("\(url)/Product.json").responseJSON { response in
