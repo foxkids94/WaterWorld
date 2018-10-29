@@ -14,6 +14,7 @@
 		54852ED42186503B0006A594 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54852ED22186503B0006A594 /* LaunchScreen.storyboard */; };
 		54852EDC218650C60006A594 /* AllCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54852EDB218650C60006A594 /* AllCategoryVC.swift */; };
 		54852EE0218652750006A594 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54852EDF218652750006A594 /* DataSource.swift */; };
+		54852EE2218720E50006A594 /* ProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54852EE1218720E50006A594 /* ProductVC.swift */; };
 		C8C863DF04EF312B0E69573A /* Pods_Water.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AD25071BA8C652C5252313 /* Pods_Water.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		54852ED52186503B0006A594 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54852EDB218650C60006A594 /* AllCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCategoryVC.swift; sourceTree = "<group>"; };
 		54852EDF218652750006A594 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		54852EE1218720E50006A594 /* ProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductVC.swift; sourceTree = "<group>"; };
 		A2A094E833E8C76407828CF5 /* Pods-Water.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Water.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Water/Pods-Water.debug.xcconfig"; sourceTree = "<group>"; };
 		F5ED08C53AA986AAA9F6B47F /* Pods-Water.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Water.release.xcconfig"; path = "Pods/Target Support Files/Pods-Water/Pods-Water.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				54852EDB218650C60006A594 /* AllCategoryVC.swift */,
+				54852EE1218720E50006A594 /* ProductVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				54852EC7218650370006A594 /* AppDelegate.swift in Sources */,
 				54852ECF218650370006A594 /* Water.xcdatamodeld in Sources */,
 				54852EE0218652750006A594 /* DataSource.swift in Sources */,
+				54852EE2218720E50006A594 /* ProductVC.swift in Sources */,
 				54852EDC218650C60006A594 /* AllCategoryVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

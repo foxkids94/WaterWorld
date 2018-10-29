@@ -1,35 +1,29 @@
 //
-//  AllCategoryVC.swift
+//  ProductVC.swift
 //  Water
 //
-//  Created by Юрий Макаров on 28/10/2018.
+//  Created by Юрий Макаров on 29/10/2018.
 //  Copyright © 2018 Юрий Макаров. All rights reserved.
 //
 
 import UIKit
 
-protocol UpdateDelegate {
-    var product: [Product] { get set }
-}
+private let reuseIdentifier = "Cell"
 
-class AllCategoryVC: UICollectionViewController {
+class ProductVC: UICollectionViewController, UpdateDelegate {
     
     
+    var product: [Product] = []
     
-    
-    
-    
-    var delegate: UpdateDelegate?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        print(product.count)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        
+        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
@@ -48,31 +42,22 @@ class AllCategoryVC: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return DataSource.shared.allCategory.count
+        return 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CellCategory
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
-        cell.imageCategory.image = DataSource.shared.allCategory[indexPath.row].image
-        cell.titleCategory.text = DataSource.shared.allCategory[indexPath.row].title
+        // Configure the cell
     
         return cell
     }
-    
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selfCategory = DataSource.shared.allCategory[indexPath.row]
-        delegate?.product = DataSource.shared.allProduct.filter({$0.category.title == selfCategory.title})
-        
-    }
-    
 
     // MARK: UICollectionViewDelegate
 
@@ -106,13 +91,18 @@ class AllCategoryVC: UICollectionViewController {
     */
     
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! AllCategoryVC
+        destination.delegate = self
+        
+    }
 
 }
 
 
-
-class CellCategory: UICollectionViewCell {
-    @IBOutlet weak var imageCategory: UIImageView!
-    @IBOutlet weak var titleCategory: UILabel!
+class CellProduct: UICollectionViewCell {
+    
+    @IBOutlet weak var avatarImage: UIImageView!
+    @IBOutlet weak var titleProduct: UILabel!
+    
 }
