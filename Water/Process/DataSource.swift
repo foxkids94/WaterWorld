@@ -22,7 +22,7 @@ class DataSource: NSObject {
     func downloadAllTxtData(){
         request("\(url)/Product.json").responseJSON { response in
             if response.result.value != nil {
-                DispatchQueue.global(qos: .userInteractive).sync {
+               
                 let allData = response.result.value as? NSDictionary
                 allData?.allKeys.forEach({ (data) in
                     
@@ -38,7 +38,6 @@ class DataSource: NSObject {
                         self.ConvertDataForProduct(category: newCategory, data: allData![data] as! NSDictionary)
                         })
                     })
-                }
             }
         }
     }
