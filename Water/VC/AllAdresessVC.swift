@@ -36,8 +36,9 @@ class AllAdresessVC: UITableViewController {
     @IBAction func createNewAdress(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "Вы ходите добавить новый адрес?", message: "Для добавления нового адреса доставки, заполните необходимые поля.", preferredStyle: .alert)
         alert.addTextField { $0.placeholder = "Имя" }
-        alert.addTextField { $0.placeholder = "Адрес доставки" }
-        alert.addTextField { $0.placeholder = "Номер телефона" }
+        alert.addTextField { $0.placeholder = "Адрес доставки"}
+        alert.addTextField { $0.placeholder = "Номер телефона"
+                             $0.keyboardType = .namePhonePad }
         let actionOK = UIAlertAction(title: "Добавить", style: .default) { (action) in
             self.saveNewAdres(name: alert.textFields![0].text!, adress: alert.textFields![1].text!, numberPhone: alert.textFields![2].text!)
         }
@@ -47,7 +48,6 @@ class AllAdresessVC: UITableViewController {
         alert.addAction(actionOK)
         alert.addAction(actionCancel)
         self.present(alert, animated: true, completion: nil)
-        
     }
     
     
@@ -73,11 +73,32 @@ class AllAdresessVC: UITableViewController {
         
     }
     
+    
+    func delete(indexPath: Int) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let contex = appDelegate.persistentContainer.viewContext
+        let object = DataSource.shared.allAdresses[indexPath]
+        do {
+            try contex.delete(object)
+            
+            DataSource.shared.allAdresses.remove(at: indexPath)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100.0
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AdresCell", for: indexPath) as! CellAdres
 
         cell.Name.text = DataSource.shared.allAdresses[indexPath.row].name
-
+        cell.adresLbl.text = DataSource.shared.allAdresses[indexPath.row].adres
+        cell.phoneNumber.text = DataSource.shared.allAdresses[indexPath.row].numberPhone
         return cell
     }
  
@@ -90,18 +111,30 @@ class AllAdresessVC: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            
+            
+            let alertDelete = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            let actionDelete = UIAlertAction(title: "Удалить адрес доставки", style: .destructive) { (action) in self.delete(indexPath: indexPath.row) }
+            let actionCancel = UIAlertAction(title: "Отмена", style: .default, handler: nil)
+            alertDelete.addAction(actionDelete)
+            alertDelete.addAction(actionCancel)
+            self.present(alertDelete, animated: true, completion: nil)
+            
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
+    
+    
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
