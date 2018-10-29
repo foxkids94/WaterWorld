@@ -8,23 +8,11 @@
 
 import UIKit
 
-protocol UpdateDelegate {
-    var product: [Product] { get set }
-}
 
-class AllCategoryVC: UICollectionViewController {
-    
-    
-    
-    
-    
-    
-    var delegate: UpdateDelegate?
+class AllCategoryVC: UICollectionViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -69,7 +57,10 @@ class AllCategoryVC: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selfCategory = DataSource.shared.allCategory[indexPath.row]
-        delegate?.product = DataSource.shared.allProduct.filter({$0.category.title == selfCategory.title})
+        
+        
+        ProductVC.product = DataSource.shared.allProduct.filter({$0.category.title == selfCategory.title})
+        
         
     }
     
