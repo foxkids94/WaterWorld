@@ -14,6 +14,7 @@ class AllAdresessVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -51,6 +52,13 @@ class AllAdresessVC: UITableViewController {
     }
     
     
+    @IBAction func editTbl(_ sender: UIBarButtonItem) {
+        if tableView.isEditing == true {
+            tableView.isEditing = false
+        } else {
+            tableView.isEditing = true
+        }
+    }
     
     func saveNewAdres(name: String, adress: String, numberPhone: String) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -85,8 +93,23 @@ class AllAdresessVC: UITableViewController {
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    
+    func SaveWithoutNewAdres(firtstIndexPath: Int, destionationIndexPath: Int) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let contex = appDelegate.persistentContainer.viewContext
+        let element = DataSource.shared.allAdresses[firtstIndexPath]
+        DataSource.shared.allAdresses.remove(at: firtstIndexPath)
         
-        
+        do {
+            
+            try contex.save()
+            DataSource.shared.allAdresses.insert(element, at: destionationIndexPath)
+            self.tableView.reloadData()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -103,13 +126,14 @@ class AllAdresessVC: UITableViewController {
     }
  
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        SaveWithoutNewAdres(firtstIndexPath: sourceIndexPath.row, destionationIndexPath: destinationIndexPath.row)
+        print("Начало \(sourceIndexPath.row), конец \(destinationIndexPath.row)")
+    }
 
     
     // Override to support editing the table view.

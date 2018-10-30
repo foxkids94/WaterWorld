@@ -86,11 +86,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="eGf-Bd-Te6">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="zxf-1H-M6C">
-                            <connections>
-                                <action selector="createNewAdress:" destination="f2C-Mk-6cG" id="CF1-y8-CBQ"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="edit" id="XeN-J1-mbH">
+                                <connections>
+                                    <action selector="editTbl:" destination="f2C-Mk-6cG" id="LRp-6w-btH"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem style="plain" systemItem="add" id="zxf-1H-M6C">
+                                <connections>
+                                    <action selector="createNewAdress:" destination="f2C-Mk-6cG" id="CF1-y8-CBQ"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="quO-xk-DPE" userLabel="First Responder" sceneMemberID="firstResponder"/>
