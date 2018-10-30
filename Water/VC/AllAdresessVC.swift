@@ -118,14 +118,16 @@ class AllAdresessVC: UITableViewController {
             
             
             let alertDelete = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            let actionDelete = UIAlertAction(title: "Удалить адрес доставки", style: .destructive) { (action) in self.delete(indexPath: indexPath.row) }
+            let actionDelete = UIAlertAction(title: "Удалить адрес доставки", style: .destructive) { (action) in self.delete(indexPath: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
             let actionCancel = UIAlertAction(title: "Отмена", style: .default, handler: nil)
             alertDelete.addAction(actionDelete)
             alertDelete.addAction(actionCancel)
             self.present(alertDelete, animated: true, completion: nil)
             
             
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
