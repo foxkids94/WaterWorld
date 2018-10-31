@@ -8,15 +8,21 @@
 
 import UIKit
 import CoreData
+import UserNotifications
+import CoreLocation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate{
 
     var window: UIWindow?
-
+    let notificationCenter = UNUserNotificationCenter.current()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        applicationRequestAuthorisationNotification()
+        DataSource.shared.AuthLocation()
+        DataSource.shared.downloadAllTxtData()
+        DataSource.shared.downloadAdres()
         return true
     }
 
@@ -29,16 +35,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
+    
+    
+    func applicationRequestAuthorisationNotification() {
+        notificationCenter.requestAuthorization(options: [.alert, .badge, .carPlay, .sound], completionHandler: { (grant, error) in
+            guard grant else { return }
+            print("Granted: \(grant)")
+            self.getNotificationCentr()
+        })
+    }
+    
+    
+    func getNotificationCentr() {
+        notificationCenter.getNotificationSettings { (settings) in
+            print(settings)
+        }
+    }
 
+    func scheduleNotificationContent() {
+        let content = UNMutableNotificationContent()
+        content.title = "Водный мир"
+        content.subtitle = "Уведомление от Водного мира"
+        content.body = "Вы находитесь рядом с Водным Миром - заходите в гости."
+        content.sound = UNNotificationSound.defaultCritical
+        content.badge = UIApplication.shared.applicationIconBadgeNumber + 1 as NSNumber
+        
+        let idNotification = "Local Notification"
+        let oneOffice = CLLocationCoordinate2D(latitude: 54.19451644, longitude: 45.17217482)
+        let clRegion = CLCircularRegion(center: oneOffice, radius: 150, identifier: idNotification)
+        
+        let trigger = UNLocationNotificationTrigger(region: clRegion, repeats: true)
+        
+        
+        let request = UNNotificationRequest(identifier: idNotification,
+                                            content: content,
+                                            trigger: trigger)
+        notificationCenter.add(request) { (error) in
+            if let error = error {
+                print("\(error.localizedDescription)")
+            }
+        }
+    }
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        DataSource.shared.downloadAllTxtData()
-        DataSource.shared.downloadAdres()
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

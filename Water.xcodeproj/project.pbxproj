@@ -17,6 +17,7 @@
 		54852EE2218720E50006A594 /* ProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54852EE1218720E50006A594 /* ProductVC.swift */; };
 		54852EE4218761990006A594 /* BuyItProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54852EE3218761990006A594 /* BuyItProductVC.swift */; };
 		54852EE62187A3D30006A594 /* AllAdresessVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54852EE52187A3D30006A594 /* AllAdresessVC.swift */; };
+		548E8591218A6975001E8744 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548E8590218A6974001E8744 /* ViewController.swift */; };
 		C8C863DF04EF312B0E69573A /* Pods_Water.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AD25071BA8C652C5252313 /* Pods_Water.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,8 @@
 		54852EE1218720E50006A594 /* ProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductVC.swift; sourceTree = "<group>"; };
 		54852EE3218761990006A594 /* BuyItProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyItProductVC.swift; sourceTree = "<group>"; };
 		54852EE52187A3D30006A594 /* AllAdresessVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAdresessVC.swift; sourceTree = "<group>"; };
+		548E858F218A55F7001E8744 /* Water.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Water.entitlements; sourceTree = "<group>"; };
+		548E8590218A6974001E8744 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A2A094E833E8C76407828CF5 /* Pods-Water.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Water.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Water/Pods-Water.debug.xcconfig"; sourceTree = "<group>"; };
 		F5ED08C53AA986AAA9F6B47F /* Pods-Water.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Water.release.xcconfig"; path = "Pods/Target Support Files/Pods-Water/Pods-Water.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,10 +74,12 @@
 		54852EC5218650370006A594 /* Water */ = {
 			isa = PBXGroup;
 			children = (
+				548E858F218A55F7001E8744 /* Water.entitlements */,
 				54852EDE2186525D0006A594 /* Process */,
 				54852EDD218652540006A594 /* VC */,
 				54852EC6218650370006A594 /* AppDelegate.swift */,
 				54852ECA218650370006A594 /* Main.storyboard */,
+				548E8590218A6974001E8744 /* ViewController.swift */,
 				54852ED02186503B0006A594 /* Assets.xcassets */,
 				54852ED22186503B0006A594 /* LaunchScreen.storyboard */,
 				54852ED52186503B0006A594 /* Info.plist */,
@@ -153,6 +158,14 @@
 				TargetAttributes = {
 					54852EC2218650370006A594 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -237,6 +250,7 @@
 				54852EE2218720E50006A594 /* ProductVC.swift in Sources */,
 				54852EE4218761990006A594 /* BuyItProductVC.swift in Sources */,
 				54852EE62187A3D30006A594 /* AllAdresessVC.swift in Sources */,
+				548E8591218A6975001E8744 /* ViewController.swift in Sources */,
 				54852EDC218650C60006A594 /* AllCategoryVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -384,6 +398,7 @@
 			baseConfigurationReference = A2A094E833E8C76407828CF5 /* Pods-Water.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 44YJQTRYW4;
 				INFOPLIST_FILE = Water/Info.plist;
@@ -391,8 +406,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = test.Water;
+				PRODUCT_BUNDLE_IDENTIFIER = com.waterWorld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -403,6 +419,7 @@
 			baseConfigurationReference = F5ED08C53AA986AAA9F6B47F /* Pods-Water.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 44YJQTRYW4;
 				INFOPLIST_FILE = Water/Info.plist;
@@ -410,8 +427,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = test.Water;
+				PRODUCT_BUNDLE_IDENTIFIER = com.waterWorld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

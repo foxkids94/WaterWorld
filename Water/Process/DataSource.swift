@@ -9,15 +9,23 @@
 import UIKit
 import Alamofire
 import CoreData
+import CoreLocation
 
-class DataSource: NSObject {
 
+class DataSource:NSObject, CLLocationManagerDelegate {
+    
+    let locationManager: CLLocationManager = CLLocationManager()
     var allCategory: [Category] = []
     var allProduct: [Product] = []
     var allAdresses: [UserInfo] = []
     static let shared = DataSource()
     
-    private override init() {}
+    private override init() {
+        super.init()
+        locationManager.delegate = self
+    }
+    
+    
     let url: URL = URL(string: "http://149.154.69.176")!
     
     
@@ -79,8 +87,33 @@ class DataSource: NSObject {
         }
     }
     
-}
+    final func AuthLocation() {
+        locationManager.delegate = self
+        let authLocation = CLLocationManager.authorizationStatus()
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.pausesLocationUpdatesAutomatically = false
+        switch authLocation {
+        case .restricted:
+            locationManager.requestAlwaysAuthorization()
+        case .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+            //nearForPlace()
+        default:
+            locationManager.requestAlwaysAuthorization()
+        }
+    }
+    
+    final func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let myLocation: CLLocation = CLLocation(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
+        let location1 = CLLocation(latitude: 54.1943226, longitude: 45.17210260000002)
+        myLocation.distance(from: location1)
+        
+        print("Осталось до места \(Int(myLocation.distance(from: location1))) метров")
 
+        
+    }
+    
+}
 
 struct Category {
     let title: String
