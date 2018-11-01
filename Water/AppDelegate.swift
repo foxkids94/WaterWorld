@@ -67,10 +67,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         content.badge = UIApplication.shared.applicationIconBadgeNumber + 1 as NSNumber
         
         let idNotification = "Local Notification"
-        let oneOffice = CLLocationCoordinate2D(latitude: 54.19451644, longitude: 45.17217482)
+        let oneOffice = CLLocationCoordinate2D(latitude: 54.220099, longitude: 45.11486590000004)
         let clRegion = CLCircularRegion(center: oneOffice, radius: 150, identifier: idNotification)
         
-        let trigger = UNLocationNotificationTrigger(region: clRegion, repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
+        
+        //let trigger = UNLocationNotificationTrigger(region: clRegion, repeats: true)
         
         
         let request = UNNotificationRequest(identifier: idNotification,
@@ -141,3 +143,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
 
 }
 
+
+
+
+extension AppDelegate: UNUserNotificationCenterDelegate{
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound])
+    }
+}

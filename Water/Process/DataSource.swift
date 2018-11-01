@@ -88,10 +88,10 @@ class DataSource:NSObject, CLLocationManagerDelegate {
     }
     
     final func AuthLocation() {
-        locationManager.delegate = self
         let authLocation = CLLocationManager.authorizationStatus()
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.pausesLocationUpdatesAutomatically = false
+        
         switch authLocation {
         case .restricted:
             locationManager.requestAlwaysAuthorization()
