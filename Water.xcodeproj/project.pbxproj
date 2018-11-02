@@ -18,6 +18,8 @@
 		54852EE4218761990006A594 /* BuyItProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54852EE3218761990006A594 /* BuyItProductVC.swift */; };
 		54852EE62187A3D30006A594 /* AllAdresessVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54852EE52187A3D30006A594 /* AllAdresessVC.swift */; };
 		548E8591218A6975001E8744 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548E8590218A6974001E8744 /* ViewController.swift */; };
+		548E8593218B936A001E8744 /* default.gpx.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 548E8592218B936A001E8744 /* default.gpx.gpx */; };
+		548E8595218BB247001E8744 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548E8594218BB247001E8744 /* Notification.swift */; };
 		C8C863DF04EF312B0E69573A /* Pods_Water.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AD25071BA8C652C5252313 /* Pods_Water.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,8 @@
 		54852EE52187A3D30006A594 /* AllAdresessVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAdresessVC.swift; sourceTree = "<group>"; };
 		548E858F218A55F7001E8744 /* Water.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Water.entitlements; sourceTree = "<group>"; };
 		548E8590218A6974001E8744 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		548E8592218B936A001E8744 /* default.gpx.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = default.gpx.gpx; sourceTree = "<group>"; };
+		548E8594218BB247001E8744 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		A2A094E833E8C76407828CF5 /* Pods-Water.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Water.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Water/Pods-Water.debug.xcconfig"; sourceTree = "<group>"; };
 		F5ED08C53AA986AAA9F6B47F /* Pods-Water.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Water.release.xcconfig"; path = "Pods/Target Support Files/Pods-Water/Pods-Water.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,6 +60,7 @@
 		54852EBA218650370006A594 = {
 			isa = PBXGroup;
 			children = (
+				548E8592218B936A001E8744 /* default.gpx.gpx */,
 				54852EC5218650370006A594 /* Water */,
 				54852EC4218650370006A594 /* Products */,
 				9276BBE72310BEDA6314A56C /* Pods */,
@@ -103,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				54852EDF218652750006A594 /* DataSource.swift */,
+				548E8594218BB247001E8744 /* Notification.swift */,
 			);
 			path = Process;
 			sourceTree = "<group>";
@@ -194,6 +200,7 @@
 			files = (
 				54852ED42186503B0006A594 /* LaunchScreen.storyboard in Resources */,
 				54852ED12186503B0006A594 /* Assets.xcassets in Resources */,
+				548E8593218B936A001E8744 /* default.gpx.gpx in Resources */,
 				54852ECC218650370006A594 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,6 +253,7 @@
 			files = (
 				54852EC7218650370006A594 /* AppDelegate.swift in Sources */,
 				54852ECF218650370006A594 /* Water.xcdatamodeld in Sources */,
+				548E8595218BB247001E8744 /* Notification.swift in Sources */,
 				54852EE0218652750006A594 /* DataSource.swift in Sources */,
 				54852EE2218720E50006A594 /* ProductVC.swift in Sources */,
 				54852EE4218761990006A594 /* BuyItProductVC.swift in Sources */,

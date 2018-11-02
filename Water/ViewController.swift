@@ -10,8 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let notification = Notification()
     
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func `self`(_ sender: UIButton) {
-        appDelegate.scheduleNotificationContent()
+        notification.scheduleNotificationContent()
     }
     
     /*

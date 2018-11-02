@@ -15,11 +15,12 @@ import CoreLocation
 class AppDelegate: UIResponder, UIApplicationDelegate{
 
     var window: UIWindow?
-    let notificationCenter = UNUserNotificationCenter.current()
-
+    let notificationCenter = Notification()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        applicationRequestAuthorisationNotification()
+        notificationCenter.applicationRequestAuthorisationNotification()
+        notificationCenter.notificationCenter.delegate = self
         DataSource.shared.AuthLocation()
         DataSource.shared.downloadAllTxtData()
         DataSource.shared.downloadAdres()
@@ -41,49 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
-    
-    
-    func applicationRequestAuthorisationNotification() {
-        notificationCenter.requestAuthorization(options: [.alert, .badge, .carPlay, .sound], completionHandler: { (grant, error) in
-            guard grant else { return }
-            print("Granted: \(grant)")
-            self.getNotificationCentr()
-        })
-    }
-    
-    
-    func getNotificationCentr() {
-        notificationCenter.getNotificationSettings { (settings) in
-            print(settings)
-        }
-    }
 
-    func scheduleNotificationContent() {
-        let content = UNMutableNotificationContent()
-        content.title = "Водный мир"
-        content.subtitle = "Уведомление от Водного мира"
-        content.body = "Вы находитесь рядом с Водным Миром - заходите в гости."
-        content.sound = UNNotificationSound.defaultCritical
-        content.badge = UIApplication.shared.applicationIconBadgeNumber + 1 as NSNumber
-        
-        let idNotification = "Local Notification"
-        let oneOffice = CLLocationCoordinate2D(latitude: 54.220099, longitude: 45.11486590000004)
-        let clRegion = CLCircularRegion(center: oneOffice, radius: 150, identifier: idNotification)
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
-        
-        //let trigger = UNLocationNotificationTrigger(region: clRegion, repeats: true)
-        
-        
-        let request = UNNotificationRequest(identifier: idNotification,
-                                            content: content,
-                                            trigger: trigger)
-        notificationCenter.add(request) { (error) in
-            if let error = error {
-                print("\(error.localizedDescription)")
-            }
-        }
-    }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
@@ -149,5 +108,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
 extension AppDelegate: UNUserNotificationCenterDelegate{
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound])
+    }
+    
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        if response.notification.request.identifier == "Local Notification" {
+            print("Open in app")
+        }
+        completionHandler()
     }
 }

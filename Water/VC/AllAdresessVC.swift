@@ -86,9 +86,9 @@ class AllAdresessVC: UITableViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let contex = appDelegate.persistentContainer.viewContext
         let object = DataSource.shared.allAdresses[indexPath]
+        
         do {
             try contex.delete(object)
-            
             DataSource.shared.allAdresses.remove(at: indexPath)
         } catch {
             print(error.localizedDescription)
