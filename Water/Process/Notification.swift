@@ -29,6 +29,11 @@ class Notification: NSObject, UNUserNotificationCenterDelegate {
         }
     }
     
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+    
     func scheduleNotificationContent() {
         let idActions = "Actions"
         let content = UNMutableNotificationContent()
