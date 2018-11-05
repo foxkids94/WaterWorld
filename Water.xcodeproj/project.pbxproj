@@ -20,6 +20,7 @@
 		548E8591218A6975001E8744 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548E8590218A6974001E8744 /* ViewController.swift */; };
 		548E8593218B936A001E8744 /* default.gpx.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 548E8592218B936A001E8744 /* default.gpx.gpx */; };
 		548E8595218BB247001E8744 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548E8594218BB247001E8744 /* Notification.swift */; };
+		54D2708A218F802400B69A8A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54D27089218F802400B69A8A /* GoogleService-Info.plist */; };
 		C8C863DF04EF312B0E69573A /* Pods_Water.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AD25071BA8C652C5252313 /* Pods_Water.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		548E8590218A6974001E8744 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		548E8592218B936A001E8744 /* default.gpx.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = default.gpx.gpx; sourceTree = "<group>"; };
 		548E8594218BB247001E8744 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		54D27089218F802400B69A8A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A2A094E833E8C76407828CF5 /* Pods-Water.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Water.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Water/Pods-Water.debug.xcconfig"; sourceTree = "<group>"; };
 		F5ED08C53AA986AAA9F6B47F /* Pods-Water.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Water.release.xcconfig"; path = "Pods/Target Support Files/Pods-Water/Pods-Water.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,6 +91,7 @@
 				54852ED22186503B0006A594 /* LaunchScreen.storyboard */,
 				54852ED52186503B0006A594 /* Info.plist */,
 				54852ECD218650370006A594 /* Water.xcdatamodeld */,
+				54D27089218F802400B69A8A /* GoogleService-Info.plist */,
 			);
 			path = Water;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			files = (
 				54852ED42186503B0006A594 /* LaunchScreen.storyboard in Resources */,
 				54852ED12186503B0006A594 /* Assets.xcassets in Resources */,
+				54D2708A218F802400B69A8A /* GoogleService-Info.plist in Resources */,
 				548E8593218B936A001E8744 /* default.gpx.gpx in Resources */,
 				54852ECC218650370006A594 /* Main.storyboard in Resources */,
 			);
@@ -234,10 +238,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Water/Pods-Water-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

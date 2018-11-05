@@ -213,7 +213,7 @@
                                             <state key="normal" title="Button"/>
                                             <connections>
                                                 <action selector="Buy:" destination="KtE-Ee-hnM" eventType="touchUpInside" id="gW9-PB-Z9C"/>
-                                                <segue destination="wAT-Qf-YEk" kind="presentation" id="Ugb-XH-pyL"/>
+                                                <segue destination="wAT-Qf-YEk" kind="presentation" modalPresentationStyle="overCurrentContext" id="Ugb-XH-pyL"/>
                                             </connections>
                                         </button>
                                     </subviews>

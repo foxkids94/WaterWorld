@@ -26,13 +26,19 @@ class Notification: NSObject, UNUserNotificationCenterDelegate {
     func getNotificationCentr() {
         notificationCenter.getNotificationSettings { (settings) in
             print(settings)
+            guard settings.authorizationStatus == .authorized else { return }
+            
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
         }
     }
     
-    
+    /*
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         completionHandler()
     }
+ */
     
     func scheduleNotificationContent() {
         let idActions = "Actions"
